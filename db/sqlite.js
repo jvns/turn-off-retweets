@@ -1,6 +1,7 @@
 var Sequelize = require('sequelize');
 
 var DB_PATH = '.data/database.sqlite';
+
 function createDB() {
   var sqlite3 = require('sqlite3').verbose();
   if (require('fs').existsSync(DB_PATH)) {
@@ -10,19 +11,19 @@ function createDB() {
     require('fs').mkdirSync('.data', 0744);
   }
   console.log('hi2');
-  
+
   db.serialize(function() {
-  db.run("CREATE TABLE lorem (info TEXT)");
+    db.run("CREATE TABLE lorem (info TEXT)");
 
-  var stmt = db.prepare("INSERT INTO lorem VALUES (?)");
-  for (var i = 0; i < 1; i++) {
+    var stmt = db.prepare("INSERT INTO lorem VALUES (?)");
+    for (var i = 0; i < 1; i++) {
       stmt.run("Ipsum " + i);
-  }
-  stmt.finalize();
+    }
+    stmt.finalize();
 
-})
+  })
 
-db.close();
+  db.close();
   console.log('hi5');
   console.log(require('fs').existsSync('.data'))
 
@@ -39,8 +40,8 @@ var sequelize = new Sequelize('database', process.env.DB_USER, process.env.DB_PA
     min: 0,
     idle: 10000
   },
-    // Security note: the database is saved to the file `database.sqlite` on the local filesystem. It's deliberately placed in the `.data` directory
-    // which doesn't get copied if someone remixes the project.
+  // Security note: the database is saved to the file `database.sqlite` on the local filesystem. It's deliberately placed in the `.data` directory
+  // which doesn't get copied if someone remixes the project.
   storage: DB_PATH
 });
 
@@ -67,14 +68,14 @@ sequelize.authenticate()
     createDB();
     setup();
   })
-  // .catch(function (err) {
-  //   console.log('Unable to connect to the database: ', err);
-  // })
-  
+// .catch(function (err) {
+//   console.log('Unable to connect to the database: ', err);
+// })
+
 createDB();
 
 function findById(id, cb) {
-  return User.findById(id).then(function(user){
+  return User.findById(id).then(function(user) {
     cb(null, user);
 
   });
@@ -89,8 +90,10 @@ function findOrCreate(profile, token, tokenSecret, cb) {
       tokenSecret: tokenSecret
     }
     User.findOrCreate({
-        where: { id: profile.id },
-        defaults: user
+      where: {
+        id: profile.id
+      },
+      defaults: user
     }).spread(function(user, created) {
       if (created) console.log('Creating user');;
       console.log(user);
@@ -100,9 +103,9 @@ function findOrCreate(profile, token, tokenSecret, cb) {
 }
 
 // populate table with default users
-function setup(){
+function setup() {
   User.sync() // using 'force' it drops the table users if it already exists, and creates a new one
-    .then(function(){
+    .then(function() {
       // Add the default users to the database
       // for(var i=0; i<users.length; i++){ // loop through all users
       //   User.create({ firstName: users[i][0], lastName: users[i][1]}); // create a new entry in the users table
