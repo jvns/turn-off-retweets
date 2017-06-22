@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user %}
+<script type="text/javascript" src="/js/profile.js"></script>
+<div class="row" style="margin-top:50px">
+  
+<div id="skew" class="col-md-3">
+</div>
+  <div id="app-4" class="col-md-6">
+  <p>
+    Hi! I got tired of seeing retweets on Twitter, so I decided to turn them off for everyone I follow. However, doing that manually was really slow. So I made a small webapp to do it for me!    
+  </p>
+  <p>
+    Here's a list of everyone you follow on Twitter, mostly (${ friends && friends.length } of them). They're sorted by lifetime tweet count. You can click "turn off retweets" and it'll use the Twitter API to turn off retweets.
+  </p>   
+  <p>
+    This app uses a cache to avoid hitting Twitter API rate limits. To get up-to-date information (for example after turning off retweets for a few people) you can 
+    <span> 
+      <a class="btn btn-warning btn-sm" style="color: white" onclick="clearCache();">Clear the cache </a></span>.
+  </p> 
+    <div v-if="!no_retweets">
+   <img src="https://cdn.glitch.com/6ad56f6a-9176-4aac-af49-a9e250b34e80%2Floading.gif?1498102988407">   
+    </div>
+    <div v-if="no_retweets">
+    <h1>
+       Friends with retweets turned on
+    </h1>
+   
+  <table class="table">
+    <tr v-for="friend in friends" v-if="no_retweets[friend.id] !== 1">
+    <td>
+      <img :src="friend.profile_image_url_https"></td> <td>
+      <a :href="'https://twitter.com/' + friend.screen_name">@${friend.screen_name}</a></td><td>
+       ${ friend.statuses_count || 0 } tweets </td><td> 
+      <span v-if="!retweets_change[friend.screen_name]">  <a class="btn btn-warning btn-sm"  style="color: white"  v-on:click="updateRetweets('false', friend.screen_name, retweets_change)">Turn off retweets </a></span>
+      </td>
+    </tr>
+    </table>
+  <table class="table" v-if="no_retweets">
+    <h1>
+       Friends with retweets turned off
+    </h1>
+    
+    <tr v-for="friend in friends" v-if="no_retweets[friend.id] == 1">
+    <td>
+      <img :src="friend.profile_image_url_https"></td> <td>
+      <a :href="'https://twitter.com/' + friend.screen_name">@${friend.screen_name}</a></td><td>
+       ${ friend.statuses_count || 0 } tweets </td><td> 
+      <span v-if="!retweets_change[friend.screen_name]"> <a  class="btn btn-warning btn-sm" style="color: white" v-on:click="updateRetweets('true', friend.screen_name, retweets_change)">Turn on retweets </a></span>
+      <span v-if="retweets_change[friend.screen_name]"> ❤ done ❤</span>
+      </td>
+    </tr>
+
+  </table>
+    </div>
+</div>
+  </div>
+  {% else %}
+<p>
+  
+  <div class="row">
+<div  class="col-md-3">
+</div>
+  <div class="col-md-6">
+    <p>
+    Hi! I got tired of seeing retweets on Twitter, so I decided to turn them off for everyone I follow. However, doing that manually was really slow. So I made a small webapp to do it for me!    
+    </p>
+    <a href="/login/twitter">
+  <img src="https://s3.amazonaws.com/hyperweb-editor-assets/us-east-1%3Ad93343c3-d924-46cb-ac62-1d7592c57166%2Fsign-in-with-twitter.png"
+       alt="Sign In with Twitter" />
+</a>
+
+  </div>
+</div>
+</p>
+  {% endif %}
+{% endblock %}
