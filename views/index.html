@@ -24,7 +24,7 @@
   </p> 
   <p>
       <div align="center">
-      <a class="btn btn-warning btn-sm" style="color: white" onclick="clearCache();">Clear the cache </a></span>.
+      <a class="btn btn-warning btn-sm" style="color: white" onclick="clearCache();">Clear the cache</a></span>
       </div>
   </p> 
     <div v-if="!no_retweets">
@@ -73,7 +73,17 @@
 </div>
   <div class="col-md-6">
     <p>
-    Hi! I got tired of seeing retweets on Twitter, so I decided to turn them off for everyone I follow. However, doing that manually was really slow. So I made a small webapp to do it for me!    
+    Hi! I got tired of seeing retweets on Twitter, so I decided to turn them off for some of the people I follow.
+    However, doing that manually was really slow. So I made a small webapp to do it for me!    
+    </p>
+    <p>
+      On permissions:
+      <ul>
+        <li>This app will never post tweets for you. You can <a href="https://github.com/jvns/turn-off-retweets">read the source</a>.</li>
+        <li>The only thing it will ever do is turn off retweets for some of the people you follow.
+</li>
+        <li>It won't turn off retweets for anyone unless you ask it to. </li>
+      </ul>
     </p>
     <a href="/login/twitter">
   <img src="https://s3.amazonaws.com/hyperweb-editor-assets/us-east-1%3Ad93343c3-d924-46cb-ac62-1d7592c57166%2Fsign-in-with-twitter.png"
