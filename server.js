@@ -128,7 +128,6 @@ app.get('/update_friendship',
     if (req.query.retweets == 'false') {
       queryString += "&retweets=false"
     }
-    console.log(postData);
     var url = "friendships/update.json" + queryString;
     var body = {};
     oauthPost(oauth, url, body, req.user.token, req.user.tokenSecret,
@@ -159,7 +158,6 @@ app.get('/users.json',
         var responses = [];
         var completed_requests = 0;
         var all_users = []
-        console.log(batches);
         for (var i = 0; i < batches.length; i++) {
           var batch_ids = batches[i].join(',');
           var url = "users/lookup.json?user_id=" + batch_ids;
@@ -229,9 +227,6 @@ function oauthPost(oauth, url, postBody, token, tokenSecret, callback) {
     postBody,
     function(error, data, res) {
       if (error) {
-        console.log(require('sys').inspect(res));
-        console.log(require('sys').inspect(error));
-        console.log(data);
       } else {
         callback(data);
       }
@@ -246,9 +241,6 @@ function oauthGet(oauth, url, token, tokenSecret, callback) {
     tokenSecret,
     function(error, data, res) {
       if (error) {
-         // console.log(require('sys').inspect(res));
-         // console.log(require('sys').inspect(error));
-         // console.log(data);
       } else {
         callback(data);
       }
