@@ -103,7 +103,6 @@
         sortByFunction(app4.friends, function(x) {
           return 0;
         })
-        //        console.log(app4.tweet_info)
       }, filterTimeline);
     }
   }

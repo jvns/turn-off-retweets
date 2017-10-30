@@ -11,10 +11,6 @@
   <div id="app-4" class="col-md-6">
   <h2> Hi @{{user.username}}! </h2> 
   <p>
-    Tired of seeing retweets on Twitter? Me too! But Twitter only lets you turn off retweets for one
-    person at a time. This webapp lets you easily turn off retweets for the people you follow.
-  </p>
-  <p>
     Here's a list of everyone you follow on Twitter, mostly. They're sorted by lifetime tweet count. You can click "turn off retweets" and it'll use
     the Twitter API to turn off retweets. You need to do it one person at a time.
   </p>   
@@ -72,10 +68,37 @@
 <div  class="col-md-3">
 </div>
   <div class="col-md-6">
+  <p>
+    <a id="signin1" href="/login/twitter">
     <p>
-    Hi! I got tired of seeing retweets on Twitter, so I decided to turn them off for some of the people I follow.
-    However, doing that manually was really slow. So I made a small webapp to do it for me!    
+        <img src="https://s3.amazonaws.com/hyperweb-editor-assets/us-east-1%3Ad93343c3-d924-46cb-ac62-1d7592c57166%2Fsign-in-with-twitter.png"
+       alt="Sign In with Twitter" />
+    </a>
+    <h2>
+      Tired of seeing retweets on Twitter?
+    </h2>
+
     </p>
+    Me too! Luckily, Twitter has a feature that lets you turn off retweets for someone you follow! Here's how you do it:
+    <ol>
+      
+      <li>Go to the person's Twitter profile</li>
+      <li>Click "..." and then "Turn off retweets".</li>
+    </ol>
+    <div align="center"> 
+      <img src="https://cdn.glitch.com/6ad56f6a-9176-4aac-af49-a9e250b34e80%2Fturn-off-retweets.png?1509385005057">
+    </div>
+    
+    <p>
+      But!! Twitter only lets you do this one person at a time. Going to everyone you follow's Twitter profile and clicking "turn off retweets" for each one of them takes FOREVER.
+    </p>
+    
+    So this app helps you do it more quickly! It's very simple, it just uses the Twitter API.
+  </p>
+<p>
+  To get started, click "Sign in with Twitter!".
+</p>
+
     <p>
       On permissions:
       <ul>
@@ -85,7 +108,7 @@
         <li>It won't turn off retweets for anyone unless you ask it to. </li>
       </ul>
     </p>
-    <a href="/login/twitter">
+    <a id="signin2" href="/login/twitter">
   <img src="https://s3.amazonaws.com/hyperweb-editor-assets/us-east-1%3Ad93343c3-d924-46cb-ac62-1d7592c57166%2Fsign-in-with-twitter.png"
        alt="Sign In with Twitter" />
 </a>
