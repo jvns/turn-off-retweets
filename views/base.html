@@ -1,0 +1,66 @@
+<!-- view template -->
+<!-- called from your routes in server.js -->
+
+<!-- templating docs: http://mozilla.github.io/nunjucks/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turn off retweets!</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>-->
+    
+    <meta name="description" content="A cool thing made with HyperWeb">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      footer {
+        margin-top: 50px;
+        padding-top: 25px;
+        /*order-top: 1px solid lightgrey;*/
+      }
+      footer > a {
+        color: #BBBBBB;
+      }
+    </style>
+  </head>
+  <body>
+<nav class="navbar-inverse collapse navbar-collapse" id="bs-navbar"> 
+  <ul class="nav navbar-nav"> 
+    <li> <a href="/"> Turn off retweets! </a>
+    <li> <a href="https://twitter.com/b0rk">Made by @b0rk</a> </li>
+    {% if user %}
+   <li><button type="button" class="btn btn-default navbar-btn"><a href="/logout">Logout</a></button></li>
+
+    {% endif %}
+  </ul>
+  <ul class="nav navbar-nav navbar-right"> 
+  <li><button type="button" class="btn btn-default navbar-btn"><a target="_blank" href="https://gomix.com/#!/remix/turn-off-retweets/0d184ee3-fd8d-4b94-acf4-b4e686e57375">Remix with Glitch</a></button></li>
+  <li><button type="button" class="btn btn-default navbar-btn"><a target="_blank" href="https://glitch.me/#!/project/turn-off-retweets">View code</a></button></li>
+  </ul> </nav>
+
+    <div class="row">
+    <header>
+      
+      {% block header %}
+      <!-- override 'block header' in your template -->
+      {% endblock %}
+    </header>
+    </div>
+    {% block content %}
+    <!-- override 'block content' in your template -->
+    {% endblock %}
+    
+    {% block scripts %}
+    <!-- override 'block scripts' in your template -->
+    {% endblock %}
+  <footer>
+    <div class="col-md-12">
+      
+    </div>
+  </footer>      
+  </body>
+</html>
