@@ -1,4 +1,5 @@
   var app4;
+  var deleteme;
   var tl;
   Vue.config.delimiters = ['${', '}']
 
@@ -15,8 +16,6 @@
     localStorage.removeItem("friends");
     window.location.reload(false);
   }
-
-
 
   function sortByFunction(list, f) {
     list.sort(function(a, b) {
@@ -77,6 +76,13 @@
     }
   }
 
+  function toggleRetweets(target) {
+    var i;
+    for (i = 0; i < app4.friends.length; i++) {
+      app4.updateRetweets(target, app4.friends[i].screen_name);
+    }
+  }
+
   function filterTimeline(timeline) {
     var tweets_24h = 0
     var tweets_week = 0;
@@ -108,7 +114,7 @@
   }
 
   function main() {
-    var app4 = new Vue({
+    app4 = new Vue({
       el: '#app-4',
       delimiters: ['${', '}'],
       data: {
@@ -118,7 +124,7 @@
         retweets_change: {}
       },
       methods: {
-        updateRetweets: function(status, screen_name, hash) {
+        updateRetweets: function(status, screen_name) {
           var self = this;
           $.get('/update_friendship?retweets=' + status + '&screen_name=' + screen_name, function() {
             Vue.set(self.retweets_change, screen_name, true)

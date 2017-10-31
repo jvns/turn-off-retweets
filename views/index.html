@@ -22,11 +22,16 @@
       <div align="center">
       <a class="btn btn-warning btn-sm" style="color: white" onclick="clearCache();">Clear the cache</a></span>
       </div>
+  <hr>
   </p> 
     <div v-if="!no_retweets">
    <img src="https://cdn.glitch.com/6ad56f6a-9176-4aac-af49-a9e250b34e80%2Floading.gif?1498102988407">   
     </div>
     <div v-if="no_retweets">
+      <div align="center">
+      <a class="btn btn-danger btn-sm" style="color: white" onclick="toggleRetweets(false);">Turn OFF all retweets</a>
+      <a class="btn btn-success btn-sm" style="color: white" onclick="toggleRetweets(true);">Turn ON all retweets</a>
+      </div>
     <h1>
        Friends with retweets turned on
     </h1>
@@ -37,7 +42,7 @@
       <img :src="friend.profile_image_url_https"></td> <td>
       <a :href="'https://twitter.com/' + friend.screen_name">@${friend.screen_name}</a></td><td>
        ${ friend.statuses_count || 0 } tweets </td><td> 
-      <span v-if="!retweets_change[friend.screen_name]">  <a class="btn btn-warning btn-sm"  style="color: white"  v-on:click="updateRetweets('false', friend.screen_name, retweets_change)">Turn off retweets </a></span>
+      <span v-if="!retweets_change[friend.screen_name]">  <a class="btn btn-warning btn-sm"  style="color: white"  v-on:click="updateRetweets('false', friend.screen_name)">Turn off retweets </a></span>
       <span v-if="retweets_change[friend.screen_name]"> ❤ done ❤</span>
       </td>
     </tr>
@@ -52,7 +57,7 @@
       <img :src="friend.profile_image_url_https"></td> <td>
       <a :href="'https://twitter.com/' + friend.screen_name">@${friend.screen_name}</a></td><td>
        ${ friend.statuses_count || 0 } tweets </td><td> 
-      <span v-if="!retweets_change[friend.screen_name]"> <a  class="btn btn-warning btn-sm" style="color: white" v-on:click="updateRetweets('true', friend.screen_name, retweets_change)">Turn on retweets </a></span>
+      <span v-if="!retweets_change[friend.screen_name]"> <a  class="btn btn-warning btn-sm" style="color: white" v-on:click="updateRetweets('true', friend.screen_name)">Turn on retweets </a></span>
       <span v-if="retweets_change[friend.screen_name]"> ❤ done ❤</span>
       </td>
     </tr>
