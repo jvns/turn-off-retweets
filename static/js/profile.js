@@ -1,5 +1,4 @@
   var app4;
-  var deleteme;
   var tl;
   Vue.config.delimiters = ['${', '}']
 
