@@ -5,11 +5,7 @@
 {% if user %}
 <script type="text/javascript" src="/js/profile.js"></script>
 
-<div class="row" style="margin-top:50px">
-  
-<div id="skew" class="col-md-3">
-</div>
-  <div id="app-4" class="col-md-6">
+<div id="app-4">
   <h2> Hi @{{user.username}}! </h2> 
   <p>
     Here's a list of everyone you follow on Twitter, mostly. They're sorted by lifetime tweet count. You can click "turn off retweets" and it'll use
@@ -27,7 +23,7 @@
   <hr>
   </p> 
     <div v-if="!no_retweets">
-   <img src="https://cdn.glitch.com/6ad56f6a-9176-4aac-af49-a9e250b34e80%2Floading.gif?1498102988407">   
+   <img src="/images/loading.gif">   
     </div>
     <div v-if="no_retweets">
       <div align="center">
@@ -67,14 +63,8 @@
   </table>
     </div>
 </div>
-  </div>
   {% else %}
-<p>
-  
-  <div class="row">
-<div  class="col-md-3">
-</div>
-  <div class="col-md-6">
+<div>
   <p>
     <a id="signin1" href="/login/twitter" class="twitter-signin">
         Sign in with Twitter
@@ -84,14 +74,18 @@
     </h2>
 
     </p>
-    Me too! Luckily, Twitter has a feature that lets you turn off retweets for someone you follow! Here's how you do it:
-    <ol>
-      
-      <li>Go to the person's Twitter profile</li>
-      <li>Click "..." and then "Turn off retweets".</li>
-    </ol>
-    <div align="center"> 
-      <img src="https://cdn.glitch.com/6ad56f6a-9176-4aac-af49-a9e250b34e80%2Fturn-off-retweets.png?1509385005057">
+    <div style="width: 100%; display: flex; padding: 1rem;">
+      <div>
+        Me too! Luckily, Twitter has a feature that lets you turn off retweets for someone you follow! Here's how you do it:
+        <ol>
+
+          <li>Go to the person's Twitter profile</li>
+          <li>Click "..." and then "Turn off retweets".</li>
+        </ol>
+      </div>
+      <div style="margin: 0 3em;">
+        <img src="/images/turn-off-retweets-screenshot.png">
+      </div>
     </div>
     
     <p>
@@ -105,7 +99,7 @@
 </p>
 
 <h3>
-   Why do I have to give your app permission to post Tweets?
+   Why do I have to give this app permission to post Tweets?
 </h3>
 <p>
   I don't like it either. The reason you need to give it permission to post tweets is that Twitter only has 2 levels of permission apps can get: "read-only" and "read and write". So because this site needs to do writes (to turn off retweets), it also needs permission to do every other write action, like posting tweets.
@@ -123,7 +117,5 @@
     </a>
 
   </div>
-</div>
-</p>
   {% endif %}
 {% endblock %}

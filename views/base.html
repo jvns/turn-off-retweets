@@ -56,8 +56,7 @@
     <li> <a href="https://twitter.com/b0rk">Made by @b0rk</a> </li>
   </ul>
   <ul class="nav navbar-nav navbar-right"> 
-  <li><a target="_blank" class="nav-link" href="https://gomix.com/#!/remix/turn-off-retweets/">Remix with Glitch</a></li>
-    <li><a target="_blank" class="nav-link" href="https://glitch.me/#!/project/turn-off-retweets">View code</a></li>
+    <li><a target="_blank" class="nav-link" href="https://github.com/jvns/turn-off-retweets">View code</a></li>
     {% if user %}
    <li><a class="nav-link" style="font-weight: bold" href="/logout">Logout</a></li>
 
@@ -72,17 +71,16 @@
       {% endblock %}
     </header>
     </div>
+  <div style="width: 100%; display: flex; padding: 2rem;">
+  <div style="margin: auto; max-width: 800px;">
     {% block content %}
     <!-- override 'block content' in your template -->
     {% endblock %}
+  </div>
+  </div>
     
     {% block scripts %}
     <!-- override 'block scripts' in your template -->
     {% endblock %}
-  <footer>
-    <div class="col-md-12">
-      
-    </div>
-  </footer>      
   </body>
 </html>
