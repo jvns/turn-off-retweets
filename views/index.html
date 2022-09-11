@@ -37,7 +37,7 @@
   <table class="table">
     <tr v-for="friend in friends" v-if="no_retweets[friend.id] !== 1">
     <td>
-      <img :src="friend.profile_image_url_https"></td> <td>
+      <img :src="friend.profile_image_url_https" style="width: 48px;"></td> <td>
       <a :href="'https://twitter.com/' + friend.screen_name">@${friend.screen_name}</a></td><td>
        ${ friend.statuses_count || 0 } tweets </td><td> 
       <span v-if="!retweets_change[friend.screen_name]">  <a class="btn btn-warning btn-sm"  style="color: white"  v-on:click="updateRetweets('false', friend.screen_name)">Turn off retweets </a></span>
