@@ -15,8 +15,7 @@
 		"nunjucks": "^1.3.4",
 		"passport": "^0.2.2",
 		"passport-twitter": "^1.0.4",
-    "serve-static": "*",
-    "sqlite3": "*",
-    "sequelize": "*"
+		"serve-static": "*",
+		"sequelize": "*"
 	}
 }

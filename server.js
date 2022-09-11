@@ -8,7 +8,7 @@ var serveStatic = require('serve-static')
 passport.use(new Strategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: '/login/twitter/return'
+    callbackURL: 'http://turn-off-retweets.glitch.me/login/twitter/return'
   },
   function(token, tokenSecret, profile, cb) {
     // In this example, the user's Twitter profile is supplied as the user
