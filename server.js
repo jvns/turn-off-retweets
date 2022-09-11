@@ -8,7 +8,8 @@ var serveStatic = require('serve-static')
 passport.use(new Strategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: 'https://turn-off-retweets.jvns.ca/login/twitter/return'
+    // use CALLBACK_URL if it's in the env, otherwise prod url
+    callbackURL: process.env.CALLBACK_URL || 'https://turn-off-retweets.jvns.ca/login/twitter/return',
   },
   function(token, tokenSecret, profile, cb) {
     // In this example, the user's Twitter profile is supplied as the user
